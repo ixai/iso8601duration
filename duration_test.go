@@ -2,9 +2,10 @@ package duration
 
 import (
 	"encoding/json"
-	"github.com/stretchr/testify/assert"
 	"testing"
 	"time"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestParseString(t *testing.T) {
@@ -17,16 +18,16 @@ func TestParseString(t *testing.T) {
 	// test with good full string
 	dur, err := ParseString("P1Y2M3DT4H5M6S")
 	assert.Nil(t, err)
-	assert.Equal(t, 1, dur.Years())
-	assert.Equal(t, 30*2+3, dur.Days())
-	assert.Equal(t, 4, dur.Hours())
-	assert.Equal(t, 5, dur.Minutes())
-	assert.Equal(t, 6, dur.Seconds())
+	assert.Equal(t, float64(1), dur.Years())
+	assert.Equal(t, float64(30*2+3), dur.Days())
+	assert.Equal(t, float64(4), dur.Hours())
+	assert.Equal(t, float64(5), dur.Minutes())
+	assert.Equal(t, float64(6), dur.Seconds())
 
 	// test with good week string
 	dur, err = ParseString("P1W")
 	assert.Nil(t, err)
-	assert.Equal(t, 1, dur.Weeks())
+	assert.Equal(t, float64(1), dur.Weeks())
 }
 
 func TestString(t *testing.T) {
